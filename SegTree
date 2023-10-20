@@ -1,0 +1,58 @@
+class SegTree
+{
+    vector<int>seg;
+    public:
+        SegTree(int n)
+        {
+            seg.resize(4*n+1);
+        }
+
+        void build(int idx,int low,int high,vector<int>&v)
+        {
+            if(low==high)
+            {
+                seg[idx]=v[low];
+                return;
+            }
+            int mid=low+(high-low)/2;
+            build(2*idx+1,low,mid,v);
+            build(2*idx+2,mid+1,high,v);
+            seg[idx]=min(seg[2*idx+1],seg[2*idx+2]);
+        }
+
+        int query(int idx,int low,int high,int l,int r)
+        {
+            if(r<low||l>high)
+            {
+                return 1e9+10;
+            }
+            if(l<=low&&high<=r)
+            {
+                return seg[idx];
+            }
+            int mid=low+(high-low)>>1;
+            int left=query(2*idx+1,low,mid,l,r);
+            int right=query(2*idx+2,mid+1,high,l,r);
+            return min(left,right);
+        }
+
+        void update(int idx,int low,int high,int cur,int val)
+        {
+            if(low==high)
+            {
+                seg[idx]=val;
+                return;
+            }
+            int mid=low+(high-low)>>1;
+            if(cur<=mid)
+            {
+                update(2*idx+1,low,mid,cur,val);
+            }
+            else
+            {
+                update(2*idx+2,mid+1,high,cur,val);
+            }
+            seg[idx]=min(seg[idx*2+1],seg[idx*2+2]);
+        }
+
+};
