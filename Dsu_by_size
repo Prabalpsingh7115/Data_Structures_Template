@@ -1,0 +1,39 @@
+struct DSU
+{
+    vector<int>parent;
+    vector<int>size;
+    int components;
+
+    DSU(int n): parent(n+1), size(n+1,1), components(n)
+    {
+        for(int i=1;i<=n;i++)
+        {
+            parent[i]=i;
+        }
+    }
+
+    int find_parent(int v)
+    {
+        if(v==parent[v])
+        {
+            return v;
+        }
+        return parent[v]=find_parent(parent[v]);
+    }
+
+    void union_set(int a,int b) 
+    {
+        a=find_parent(a);
+        b=find_parent(b);
+        if(a!=b) 
+        {
+            components--;
+            if(size[a]<size[b])
+            {
+                swap(a,b);
+            }
+            parent[b]=a;
+            size[a]+=size[b];
+        }
+    }    
+};
