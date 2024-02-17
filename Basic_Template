@@ -22,17 +22,27 @@
 
 
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 using namespace std;
+using namespace __gnu_pbds;
 
-#define keher ios_base::sync_with_stdio(false);cin.tie(NULL)
+#define keher ios_base::sync_with_stdio(false);cin.tie(NULL);
 #define CY cout<<"YES\n";
 #define CN cout<<"NO\n";
-#define endl '\n' 
+#define endl '\n'
 typedef long long int ll;
+#define int long long int
 const int M=1e9+7;
-double pi=3.14159265358979323846;
+const double pi=3.14159265358979323846;
+int dx4[4]={-1,1,0,0};
+int dy4[4]={0,0,-1,1};
+int dx8[8]={-1,-1,-1,0,0,1,1,1};
+int dy8[8]={-1,0,1,-1,1,-1,0,1};
 vector<int>prime;
 set<int>prime_set;
+set<char>vowels={'a','e','i','o','u'};
+template<typename T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 #ifdef ONPC
     #include "debug.h"
@@ -168,15 +178,15 @@ bool sortcon(const pair<int,int>&a,const pair<int,int>&b)
 
 void solve()
 {
+
     
 }
 
 //****************************************************************************************************************//
 
-
-int main()
+int32_t main()
 {
-    keher;
+    keher
     int t=1;
     cin>>t;
     int X=1e5;
