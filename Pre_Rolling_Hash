@@ -6,7 +6,7 @@ void prefix_hash(const string &s,const int &n,vector<int>&v)
 	long long pre=1;
 	for(int i=0;i<n;i++)
 	{
-		int change=((s[i]-'a'+1)%M)*(cur%M))%M;
+		int change=(((s[i]-'a'+1)%M)*(cur%M))%M;
 		pre=((pre%M)+(change%M))%M;
 		v[i]=pre;
 		cur=((cur%M)*(p%M))%M;
