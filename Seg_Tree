@@ -30,7 +30,7 @@ class SegTree
             {
                 return seg[idx];
             }
-            int mid=low+(high-low)>>1;
+            int mid=low+(high-low)/2;
             int left=query(2*idx+1,low,mid,l,r);
             int right=query(2*idx+2,mid+1,high,l,r);
             return min(left,right);
@@ -43,7 +43,7 @@ class SegTree
                 seg[idx]=val;
                 return;
             }
-            int mid=low+(high-low)>>1;
+            int mid=low+(high-low)/2;
             if(cur<=mid)
             {
                 update(2*idx+1,low,mid,cur,val);
